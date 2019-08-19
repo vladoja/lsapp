@@ -23,6 +23,7 @@
 
                 <a class="nav-item nav-link" href="/posts">Blog</a>
 
+                <a class="nav-item nav-link" href="/posts/create">Create Post</a>
             </div>
 
         </div>

@@ -28,7 +28,7 @@ class PostsController extends Controller
 
         // $posts = Post::orderBy('id','desc')->get();
 
-        $posts = Post::orderBy('id','desc')->paginate(10);
+        $posts = Post::orderBy('id', 'desc')->paginate(10);
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -55,7 +55,12 @@ class PostsController extends Controller
             'body' => 'required'
         ]);
 
-        return "Dobre";
+        $post = new Post;
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
+
+        return redirect('/posts')->with('success', 'Post Created');
     }
 
     /**
