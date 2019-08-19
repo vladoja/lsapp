@@ -50,7 +50,12 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        // return view('posts.create');
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        return "Dobre";
     }
 
     /**
