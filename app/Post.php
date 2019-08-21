@@ -13,4 +13,8 @@ class Post extends Model
 
     // Ak chceme mat/nemat timestampy ( slpce )
     // public $timestamps = true;
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }
