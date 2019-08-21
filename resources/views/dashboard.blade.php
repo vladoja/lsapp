@@ -15,6 +15,28 @@
                     @endif
 
                     <a href="/posts/create" class="btn btn-primary">Create Post</a>
+                    <hr>
+                    <h3>Your Plog Posts</h3>
+                    @if (count($posts) > 0)
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Title</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            @foreach ($posts as $post)
+                                <tr>
+                                    <td>{{$post->title}}</td>
+                                    <td><a href="/posts/{{$post->id}}/edit" class="btn btn-primary">EDIT</a></td>
+                                    <td></td>
+                                </tr>                            
+                            @endforeach
+                        </table>
+                    @else
+                        <p>You dont have post. </p>
+                        
+                    @endif
+
                 </div>
             </div>
         </div>
