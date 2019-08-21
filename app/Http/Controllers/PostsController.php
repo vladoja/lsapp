@@ -95,7 +95,14 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
+        // error_log('Hello from Post edit()');
         $post = Post::find($id);
+
+        // Check for correct user
+        if (auth()->user()->id !== $post->user_id) {
+            return redirect('/posts')->with('error', 'Unauthorised Page');
+        }
+
         // return "You want to edit post with id: " . $id;
         return view('posts.edit')->with('post', $post);
     }
@@ -131,6 +138,10 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+        // Check for correct user
+        if (auth()->user()->id !== $post->user_id) {
+            return redirect('/posts')->with('error', 'Unauthorised Page');
+        }
         $post->delete();
         return redirect('/posts')->with('success', 'Post removed');
     }
